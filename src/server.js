@@ -5,7 +5,7 @@ const dotenv = require("dotenv")
 const authRoutes = require("./routes/auth");
 dotenv.config()
 const app =express()
-const PORT = 7000 || process.env.PORT
+const PORT = 3000 || process.env.PORT
 
 app.get("/", (req, res) =>{
     res.json({ message: "HabitaPay, Streamline your contacts with sekani only" });
