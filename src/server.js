@@ -8,7 +8,7 @@ const app = express();
 const PORT = 7000 || process.env.PORT;
 
 app.get("/", (req, res) => {
-  res.json({ message: "HabitaPay, Streamline your contacts with sekani only" });
+  res.json({ message: "HabitaPay, Simplify Property Management" });
 });
 
 // READING JSON
