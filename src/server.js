@@ -21,7 +21,7 @@ app.use(express.urlencoded({extended:true}))
 app.use("/api/auth", authRoutes);
 
 mongoose
-.connect(process.env.MONGO_URL)
+.connect(process.env.MONGO_URI)
 .then(() => {
     app.listen(PORT, () => {
       console.log(
