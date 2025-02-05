@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const authRoutes = require("./routes/auth");
+const tenantRoutes = require("./routes/tenants")
 dotenv.config();
 const app = express();
 const PORT = 7000 || process.env.PORT;
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // API ROUTES
 app.use("/api/auth", authRoutes);
+app.use("/api/tenants", tenantRoutes)
 
 mongoose
   .connect(process.env.MONGO_URI)
