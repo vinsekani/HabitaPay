@@ -13,7 +13,7 @@ const addTenant = async (req, res) => {
       houseNumber,
       uid,
     } = req.body;
-    const tenant = await Tenant.findOne({ phone });
+    const tenant = await Tenant.findOne({ phone, uid });
     console.log(tenant);
     if (tenant) {
       return res.status(400).json({ message: "Tenant Already Exists" });
