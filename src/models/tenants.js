@@ -10,7 +10,7 @@ const tenantSchema = new mongoose.Schema(
     dueDate: { type: String, require },
     apartmentName: { type: String, require },
     houseNumber: { type: String, require },
-    isDeleted: { type: String },
+    isDeleted: { type: Boolean, default: false },
     uid: { type: String, },
   },
   { timestamps: true }
