@@ -18,6 +18,8 @@ router.get("/:uid", allTenants);
 
 router.delete("/:id", removeTenant);
 
+router.get("/:phone")
+
 router.patch("/:id", editTenant);
 
 module.exports = router;

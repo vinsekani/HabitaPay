@@ -40,7 +40,19 @@ const addTenant = async (req, res) => {
 const allTenants = async (req, res) => {
   try {
     const { uid } = req.params;
-    const tenant = await Tenant.find({uid, isDeleted: false }).sort({
+    const tenant = await Tenant.find({ uid, isDeleted: false }).sort({
+      createdAt: -1,
+    });
+    return res.status(200).json(tenant);
+  } catch (error) {
+    return res.status(500).json({ message: error });
+  }
+};
+
+const allApartments = async (req, res) => {
+  try {
+    const { phone } = req.params;
+    const tenant = await Tenant.find({ phone, isDeleted: false }).sort({
       createdAt: -1,
     });
     return res.status(200).json(tenant);
@@ -79,4 +91,5 @@ module.exports = {
   allTenants,
   removeTenant,
   editTenant,
+  allApartments,
 };
