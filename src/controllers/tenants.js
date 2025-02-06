@@ -52,11 +52,13 @@ const allTenants = async (req, res) => {
 const allApartments = async (req, res) => {
   try {
     const { phone } = req.params;
-    const tenant = await Tenant.find({ phone, isDeleted: false }).sort({
+    const tenants = await Tenant.find({ phone, isDeleted: false }).sort({
       createdAt: -1,
     });
-    return res.status(200).json(tenant);
+    console.log(phone);
+    return res.status(200).json(tenants);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ message: error });
   }
 };
