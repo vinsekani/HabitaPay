@@ -13,27 +13,35 @@ const addTenant = async (req, res) => {
       houseNumber,
       uid,
     } = req.body;
+
+
+        // Assuming req.user contains authenticated landlord data
+    const landlordName = req.user?.name || req.body.landlordName;
+    const landlordPhone = req.user?.phone || req.body.landlordPhone;
+
     const tenant = await Tenant.findOne({ phone, uid });
-    console.log(tenant);
     if (tenant) {
       return res.status(400).json({ message: "Tenant Already Exists" });
-    } else {
-      const newTenant = new Tenant({
-        name,
-        email,
-        phone,
-        amount,
-        paymentStatus,
-        dueDate,
-        apartmentName,
-        houseNumber,
-        uid,
-      });
-      const savedTenant = await newTenant.save();
-      return res.status(201).json(savedTenant);
     }
+
+    const newTenant = new Tenant({
+      name,
+      email,
+      phone,
+      amount,
+      paymentStatus,
+      dueDate,
+      apartmentName,
+      houseNumber,
+      landlordPhone,
+      landlordName,
+      uid,
+    });
+
+    const savedTenant = await newTenant.save();
+    return res.status(201).json(savedTenant);
   } catch (error) {
-    res.status(500).json({ message: error });
+    res.status(500).json({ message: error.message });
   }
 };
 
